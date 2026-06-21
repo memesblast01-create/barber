@@ -34,8 +34,8 @@ function topBar(activeTab) {
       <span class="material-symbols-outlined text-primary">menu</span>
     </div>
     <h1 class="font-display-lg text-2xl md:text-display-lg tracking-widest text-primary uppercase">AUREATE</h1>
-    <div class="h-10 w-10 rounded-full border border-primary-container overflow-hidden cursor-pointer active:opacity-80">
-      <img class="w-full h-full object-cover" src="${Store.barbers[0].photo}"/>
+    <div class="h-10 w-10 rounded-full border border-outline-variant overflow-hidden cursor-pointer active:opacity-80">
+      <img class="w-full h-full object-cover" src="${Store.CUSTOMER_AVATAR}"/>
     </div>
   </header>`;
 }
@@ -97,6 +97,17 @@ function renderShopHome() {
   return `
     ${topBar()}
     <main class="pt-24 pb-24 px-margin max-w-lg mx-auto">
+      <div class="relative w-full h-40 rounded-xl overflow-hidden mb-lg luxury-shadow border border-outline-variant" style="background: radial-gradient(circle at 30% 30%, #2d2a21, #16130b 75%);">
+        <div class="absolute inset-0 flex flex-col justify-end p-md">
+          <span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.25em] mb-1">Est. 2024 &bull; Dubai</span>
+          <h2 class="font-display-lg text-2xl text-on-surface leading-tight">Precision Grooming,<br/>Without the Wait</h2>
+        </div>
+        <div class="absolute top-3 right-3 flex items-center gap-1 bg-surface-container-lowest/80 backdrop-blur px-3 py-1 rounded-full border border-outline-variant">
+          <div class="w-1.5 h-1.5 rounded-full bg-secondary-container pulse-amber"></div>
+          <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">${Store.barbers.filter(b => b.status === 'live').length} Live Now</span>
+        </div>
+      </div>
+
       <h2 class="font-display-lg text-3xl md:text-display-lg text-on-surface mb-1">Select Your Artisan</h2>
       <p class="font-body-md text-body-md text-on-surface-variant mb-lg">Exceptional craft, tailored for the modern gentleman.</p>
       ${rows}
@@ -126,7 +137,7 @@ function renderBooking(barberId) {
           <div class="font-label-sm text-label-sm text-on-surface-variant mt-1">${s.duration}m &bull; ${s.desc}</div>
         </div>
         <div class="flex items-center gap-3">
-          <span class="font-body-lg text-body-lg text-primary">$${s.price}</span>
+          <span class="font-body-lg text-body-lg text-primary">AED ${s.price}</span>
           <div class="w-6 h-6 rounded-full border-2 ${selected ? 'bg-primary-container border-primary-container' : 'border-outline'} flex items-center justify-center flex-shrink-0">
             ${selected ? '<span class="material-symbols-outlined text-[16px] text-on-primary">check</span>' : ''}
           </div>
@@ -275,7 +286,7 @@ function renderQueueStatus(entryId) {
           </div>
           <div class="text-right">
             <div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Cost</div>
-            <div class="font-body-lg text-body-lg text-primary">$${totalPrice}.00</div>
+            <div class="font-body-lg text-body-lg text-primary">AED ${totalPrice}.00</div>
           </div>
         </div>
       </div>
@@ -501,8 +512,8 @@ function renderShopDisplay() {
             <div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Local Time</div>
             <div class="font-display-lg text-2xl text-on-surface">${now}</div>
           </div>
-          <div class="w-12 h-12 rounded-full border border-primary-container overflow-hidden">
-            <img class="w-full h-full object-cover" src="${Store.barbers[0].photo}"/>
+          <div class="w-12 h-12 rounded-full border border-primary-container flex items-center justify-center bg-surface-container-low">
+            <span class="font-display-lg text-xl text-primary">A</span>
           </div>
         </div>
       </div>
